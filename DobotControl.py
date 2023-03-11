@@ -112,7 +112,7 @@ while True:
                     
                     dobot.move_to(200, y+moveTo[0], z+moveTo[1], 10)
 
-                fingers = gesture.get_current_up_finger()
+                fingers = gesture.get_current_raised_fingers()
 
                 if not fingers['middle'] and tiks%5 == 0:
                     startAir = replace_air(startAir)

@@ -5,6 +5,7 @@ import cv2 as cv
 import mediapipe
 import Morse
 
+
 class Dobot():
     def __init__(self):
         self.api = None
