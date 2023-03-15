@@ -82,15 +82,17 @@ class Arm():
 
         # вычисление направления большого пальца
         gradusThumb = math.atan((point5.y - point13.y) / (point5.x - point13.x)) * 57.3
-        if gradusThumb > 45 and gradusThumb <= 110 and point5.y < point13.y:
+
+        if point13.y<point5.y:
+            gradusThumb+=180
+
+        if gradusThumb in range(60,110):
             self.thumbDirection = 'up'
-        elif (gradusThumb > 110 and gradusThumb < 225) or (
-                gradusThumb > 0 and gradusThumb < 45) and point5.x > point13.x:
+        elif gradusThumb in range(110,225):
             self.thumbDirection = 'left'
-        elif gradusThumb > 45 and gradusThumb <= 110 and point5.y > point13.y:
+        elif gradusThumb in range(225,290):
             self.thumbDirection = 'down'
-        elif (gradusThumb > 110 and gradusThumb < 225) or (
-                gradusThumb > 0 and gradusThumb < 45) and point5.x < point13.x:
+        elif gradusThumb in range(290,360) or gradusThumb in range(0,60):
             self.thumbDirection = 'right'
 
         # вычисление направления ладони
@@ -100,17 +102,20 @@ class Arm():
         else:
             gradusHand = math.atan((point9.y - point0.y) / (point9.x - point0.x)) * 57.3
 
+        if point13.y<point0.y:
+            gradusHand+=180
+
         spaceBehindKnuckles = distanceInPlane(self.currentPos[5], self.currentPos[9])
 
         if distanceInPlane(point9, point0) < spaceBehindKnuckles * 1.5:
             self.handDirection = 'on'
-        elif gradusHand > 45 and gradusHand <= 135 and point0.y > point13.y:
+        elif gradusHand in range(45,135):
             self.handDirection = 'up'
-        elif (gradusHand > 135 and gradusHand < 225) or (gradusHand > 0 and gradusHand < 45) and point0.x < point13.x:
+        elif gradusHand in range(135,225):
             self.handDirection = 'left'
-        elif gradusHand > 45 and gradusHand <= 135 and point0.y < point13.y:
+        elif gradusHand in range(225,315):
             self.handDirection = 'down'
-        elif (gradusHand > 135 and gradusHand < 225) or (gradusHand > 0 and gradusHand < 45) and point0.x > point13.x:
+        elif gradusHand in range(315,360) or gradusHand in range(0,45):
             self.handDirection = 'right'
 
     def _update_info_fingers_raised(self):
