@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="20814ae8-e884-4af7-8f24-43cc29f0689f" name="Changes" comment="">
+    <list default="true" id="20814ae8-e884-4af7-8f24-43cc29f0689f" name="Changes" comment="добавил более точное вычисление угла засчет ситуативного симметричного отображения угла&#10;это заметно улучшило читаемость кода в методе _update_info_hand_position">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gesture.py" beforeDir="false" afterPath="$PROJECT_DIR$/gesture.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +36,29 @@
       <option name="presentableId" value="Default" />
       <updated>1678818392254</updated>
     </task>
+    <task id="LOCAL-00001" summary="добавил более точное вычисление угла засчет ситуативного симметричного отображения угла&#10;это заметно улучшило читаемость кода в методе _update_info_hand_position">
+      <created>1678902508606</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1678902508606</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="добавил более точное вычисление угла засчет ситуативного симметричного отображения угла&#10;это заметно улучшило читаемость кода в методе _update_info_hand_position" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавил более точное вычисление угла засчет ситуативного симметричного отображения угла&#10;это заметно улучшило читаемость кода в методе _update_info_hand_position" />
   </component>
 </project>
