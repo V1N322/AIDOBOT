@@ -76,48 +76,56 @@ class Arm():
         point13 = self.currentPos[13]
         point9 = self.currentPos[9]
         point8 = self.currentPos[8]
+        point1 = self.currentPos[1]
 
         def distanceInPlane(point1, point2):
             return ((point2.x - point1.x) ** 2 + (point2.y - point1.y) ** 2) ** 0.5
 
-# вычисление направления большого пальца
-        gradusThumb = math.atan((point5.y - point13.y) / (point5.x - point13.x)) * 57.3
+        # вычисление направления большого пальца
 
-        if point13.y < point5.y:
-            gradusThumb += 180
+        gradusThumb = math.atan((point5.y - point13.y) / (point5.x - point13.x)) * -57.3
 
-        if gradusThumb in range(60, 110):
+        if gradusThumb < 0:
+            gradusThumb = abs(gradusThumb)
+            if gradusThumb > 90:
+                gradusThumb = 180 + (180 - gradusThumb)
+            else:
+                gradusThumb = 180 + gradusThumb
+
+        if 60 < gradusThumb < 110:
             self.thumbDirection = 'up'
-        elif gradusThumb in range(110, 225):
+        elif 110 < gradusThumb < 225:
             self.thumbDirection = 'left'
-        elif gradusThumb in range(225, 290):
+        elif 225 < gradusThumb < 290:
             self.thumbDirection = 'down'
-        elif gradusThumb in range(290, 360) or gradusThumb in range(0, 60):
+        elif 290 < gradusThumb < 360 or 0 < gradusThumb < 60:
             self.thumbDirection = 'right'
 
+        # вычисление направления ладони
 
-# вычисление направления ладони
+        gradusHand = math.atan2(((point13.y + point9.y) / 2 - point0.y),
+                                ((point9.x + point13.x) / 2 - point0.x)) * -57.3
 
-        if self.fingersDict['index'].isRaised:
-            gradusHand = math.atan((point8.y - point0.y) / (point8.x - point0.x)) * 57.3
-        else:
-            gradusHand = math.atan((point9.y - point0.y) / (point9.x - point0.x)) * 57.3
+        if gradusHand < 0:
+            gradusHand = abs(gradusHand)
+            if gradusHand > 90:
+                gradusHand = 180 + (180 - gradusHand)
+            else:
+                gradusHand = 180 + gradusHand
 
-        if point13.y < point0.y:
-            gradusHand += 180
-
+        self.gradusHand = gradusHand
         spaceBehindKnuckles = distanceInPlane(self.currentPos[5], self.currentPos[9])
 
         if distanceInPlane(point9, point0) < spaceBehindKnuckles * 1.5:
             self.handDirection = 'on'
-        elif gradusHand in range(45, 135):
+        elif 45 < gradusHand < 135:
             self.handDirection = 'up'
-        elif gradusHand in range(135, 225):
-            self.handDirection = 'left'
-        elif gradusHand in range(225, 315):
-            self.handDirection = 'down'
-        elif gradusHand in range(315, 360) or gradusHand in range(0, 45):
+        elif 135 < gradusHand < 225:
             self.handDirection = 'right'
+        elif 225 < gradusHand < 315:
+            self.handDirection = 'down'
+        elif 315 < gradusHand < 360 or 0 < gradusHand < 45:
+            self.handDirection = 'left'
 
     def _update_info_fingers_raised(self):
         for finger in self.fingersDict.values():
